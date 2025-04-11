@@ -4,6 +4,12 @@ from constants import *
 
 def main():
     pygame.init()
+    
+    # Game Timing
+    clock = pygame.time.Clock()
+    dt = 0
+
+    # Set up the screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     # Main Game Loop
@@ -17,6 +23,7 @@ def main():
 
         # Refresh Screen
         pygame.display.flip()
+        dt = clock.tick(60) / 1000  # Convert milliseconds to seconds
 
 if __name__ == "__main__":
     main()
