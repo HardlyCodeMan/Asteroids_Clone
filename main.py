@@ -13,9 +13,14 @@ def main():
     # Set up the screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    # Init Player
-    player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+    # Groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
 
+    # Init Player
+    Player.containers = updatable, drawable
+    player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+    
     # Main Game Loop
     while True:
         # Event Handling
@@ -23,11 +28,13 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
+        updatable.update(dt)
         pygame.Surface.fill(screen, (0, 0, 0))
 
         # Refresh Screen
-        player.update(dt)
-        player.draw(screen)
+        for item in drawable:
+            item.draw(screen)
+    
         pygame.display.flip()
         dt = clock.tick(60) / 1000  # Convert milliseconds to seconds
 
