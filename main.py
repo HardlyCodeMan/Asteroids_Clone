@@ -1,6 +1,6 @@
 #!/bin/python3
 import pygame
-from constants import *
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from player import Player
 
 def main():
