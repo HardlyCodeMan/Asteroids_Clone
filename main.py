@@ -14,7 +14,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     # Init Player
-    player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, PLAYER_RADIUS)
+    player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 
     # Main Game Loop
     while True:
@@ -26,6 +26,7 @@ def main():
         pygame.Surface.fill(screen, (0, 0, 0))
 
         # Refresh Screen
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
         dt = clock.tick(60) / 1000  # Convert milliseconds to seconds
